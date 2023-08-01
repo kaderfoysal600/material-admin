@@ -1,0 +1,22 @@
+.card{
+    display: block;
+    // width: 400px;
+    height: auto;
+    background-color: #222b45;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFF;
+}
+.chart-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+.page-header{
+    margin-top: 20px;
+    color: #FFF;
+    text-align: center;
+    h3{
+        font-size: 20px;
+    }
+}

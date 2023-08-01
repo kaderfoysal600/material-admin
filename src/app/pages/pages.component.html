@@ -1,0 +1,69 @@
+<div class="header">
+  <div class="container">
+    <header class="header-main">
+      <div class="logo">
+        <div class="menu-bar">
+          <span (click)="sideNavToggle()" class="material-icons">menu</span>
+        </div>
+        <h2 routerLink="/">Material Admin</h2>
+      </div>
+      <div class="profile">
+        <button mat-button class="menu-header" [matMenuTriggerFor]="menu">
+          <div class="profile-img">
+            <img src="../../assets/329805441_744390206912659_3642328933682377173_n.jpg" alt="">
+          </div>
+          <p>Kader Foysal</p>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+      </div>
+    </header>
+  </div>
+</div>
+<div class="dashboard-page-render">
+  <div class="page-render-area-main" [ngClass]="{'p-100px': sideNav == false}">
+    <!---side-nav-->
+    <div class="side-nav" [ngClass]="{'w-100px side-nav-active': sideNav == false}">
+      <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
+        <div class="menu">
+          <ul *ngFor="let data of menuData">
+            <li>
+              <a *ngIf='sideNav' routerLink="/" (click)="toggleSubmenu(data)" class="sumbenu"
+                routerLinkActive="link-active">
+                <span class="material-icons icon">{{data.icon}}</span>
+                <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
+                </span>
+                <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
+                <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
+              </a>
+
+              <div  *ngIf="sideNav && data.expanded" class="submenu-content" [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
+                <div class="sabmenu-main" *ngFor="let subData of data?.children">
+                  <a href="" >
+                    <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+
+              <a *ngIf='!sideNav' (click)="toggleSubmenu(data)" #tooltip="matTooltip" matTooltip={{data.title}}
+                matTooltipPosition="right">
+                <span class="material-icons icon">{{data.icon}}
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--all-page-render-->
+    <div class="all-page-render">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="sideNav == false" (click)="sideNavToggle()"></div>

@@ -2,7 +2,7 @@ export const MENU_ITEMS: any[] = [
   {
     title: 'E-commerce',
     icon: 'shopping_cart',
-    link: '/a',
+    link: '/',
     home: true,
     
   },
@@ -157,7 +157,7 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Smart Table',
-        link: '/pages/tables/smart-table',
+        link: '/pages/tables/',
       },
       {
         title: 'Tree Grid',

@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+    background-color: #222b45;
+    color: #FFFF;
+  }
+
+  ::ng-deep .mat-header-cell{
+    color:#1e6bb8!important;
+    font-size: 16px!important;
+  }
+
+  
+  ::ng-deep  .mat-cell, .mat-footer-cell{
+    color: #FFFF;
+  }
+
+  .edit-delete{
+
+    gap: 10px;
+    button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      float: left;
+      cursor: pointer;
+      color: #FFFF;
+      &:hover{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        scale: 1.2;
+      }
+    }
+    .edit{
+      background-color: rgb(100, 189, 17);
+      &:hover{
+        background-color: rgb(27, 218, 27);
+      }
+
+    }
+    .delete{
+      margin-left: 5px;
+      background-color: red;
+    }
+  }

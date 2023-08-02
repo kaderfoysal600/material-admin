@@ -30,7 +30,8 @@
         <div class="menu">
           <ul *ngFor="let data of menuData">
             <li>
-              <a *ngIf='sideNav' routerLink="/" (click)="data.children ? toggleSubmenu(data) :null" class="sumbenu"
+              <a *ngIf='sideNav' routerLink="/"
+                (click)="data.children ? toggleSubmenu(data) : whitOutSubmenuClick(data.link)" class="sumbenu"
                 routerLinkActive="link-active">
                 <span class="material-icons icon">{{data.icon}}</span>
                 <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
@@ -38,19 +39,25 @@
                 <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
                 <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
               </a>
-
-              <div  *ngIf="sideNav && data.expanded" class="submenu-content" [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
+              <div *ngIf="sideNav && data.expanded" class="submenu-content"
+                [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
                 <div class="sabmenu-main" *ngFor="let subData of data?.children">
-                  <a href="" >
+                  <a routerLink="{{subData?.link}}">
                     <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
                     </span>
                   </a>
                 </div>
               </div>
 
-
-              <a *ngIf='!sideNav' (click)="toggleSubmenu(data.children ? toggleSubmenu(data) :null)" #tooltip="matTooltip" matTooltip={{data.title}}
-                matTooltipPosition="right">
+              <a *ngIf='!sideNav && !data.children'
+                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) :whitOutSubmenuClick(data.link))"
+                #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
+                <span class="material-icons icon">{{data.icon}}
+                </span>
+              </a>
+              <a *ngIf='!sideNav && data.children' class="submenu-parent"
+                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) : whitOutSubmenuClick(data.link))"
+                #tooltip="matTooltip" [matTooltip]="getTooltipContent(data)" matTooltipPosition="right">
                 <span class="material-icons icon">{{data.icon}}
                 </span>
               </a>
@@ -58,6 +65,10 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="settings">
+      <mat-icon>settings</mat-icon>
     </div>
     <!--all-page-render-->
     <div class="all-page-render">

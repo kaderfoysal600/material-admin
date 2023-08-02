@@ -41,7 +41,7 @@
 
 .header-main .log-right a {
   text-transform: uppercase;
-//   font-family: $font-en-nunito;
+  //   font-family: $font-en-nunito;
   font-style: normal;
   color: #111;
   font-weight: 700;
@@ -104,7 +104,7 @@
 .side-nav-main {
   max-height: 100vh;
   overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;  
+  overflow-y: scroll;
   padding-bottom: 60px;
   box-sizing: border-box;
   position: relative;
@@ -132,7 +132,8 @@
   img {
     width: 150px;
   }
-  h2{
+
+  h2 {
     color: #FFFF;
     font-weight: 500;
   }
@@ -226,7 +227,7 @@
   justify-content: flex-start;
   gap: 15px;
   color: #fff;
-//   font-family: $font-en-nunito;
+  //   font-family: $font-en-nunito;
   font-weight: 400;
   font-size: 14px;
   height: 50px;
@@ -241,37 +242,44 @@
   font-size: 22px;
 }
 
-.sumbenu{
+.sumbenu {
   position: relative;
-  ::ng-deep mat-icon{
+
+  ::ng-deep mat-icon {
     position: absolute;
     top: 14px;
     right: 5px;
     font-size: 20px;
-    height:20px;
+    height: 20px;
     width: 20px;
     color: #8f9bb3;
   }
 }
-.submenu-content{
+
+.submenu-content {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
-  a{
+
+  a {
     border-bottom: 1px solid #101426;
   }
 }
-.submenu-content a:first-child{
+
+.submenu-content a:first-child {
   border-top: 1px solid #101426;
 }
-.submenu-content a:last-child{
+
+.submenu-content a:last-child {
   border-bottom: none;
 }
-.submenu-hide{
+
+.submenu-hide {
   display: none;
   height: 0px;
 }
-.submenu-open{
+
+.submenu-open {
   display: block;
   height: 100%;
 }
@@ -292,11 +300,11 @@
 }
 
 .menu ul li :hover {
-color: #598bff;
+  color: #598bff;
 }
 
 .menu ul li .link-active:hover {
- color: #3366ff;
+  color: #3366ff;
 }
 
 .all-page-render {
@@ -317,7 +325,7 @@ color: #598bff;
   z-index: -1;
 }
 
-.submenu{
+.submenu {
   margin-left: 10px;
 }
 
@@ -328,30 +336,32 @@ color: #598bff;
 
 
 
-::-webkit-scrollbar-corner { background: rgba(0,0,0,0.5); }
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0.5);
+}
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color:#101426 red;
+  scrollbar-width: thin;
+  scrollbar-color: #101426 red;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 6px;
-    height: 3%!important;
+  width: 6px;
+  height: 3% !important;
 }
 
 *::-webkit-scrollbar-track {
-    background: #2e3a59;
-    height: 3%!important;
+  background: #2e3a59;
+  height: 3% !important;
 
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color:#101426;
-    border-radius: 5px;
-    border: 0px solid #2e3a59;
-        height: 3%!important;
+  background-color: #101426;
+  border-radius: 5px;
+  border: 0px solid #2e3a59;
+  height: 3% !important;
 }
 
 
@@ -361,12 +371,13 @@ color: #598bff;
 
 
 
-.container{
+.container {
   max-width: 1290px;
   margin: auto;
   width: 100%;
 }
-.header{
+
+.header {
   background-color: #2e3a59;
   height: 60px;
   margin: auto;
@@ -379,73 +390,107 @@ color: #598bff;
   top: 0;
   left: 0;
 }
-.header-main{
+
+.header-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
-  color:#FFF;
+  color: #FFF;
   gap: 15px;
-  h2{
-      margin-bottom: 0px;
+
+  h2 {
+    margin-bottom: 0px;
   }
 }
-.profile-img{
+
+.profile-img {
   display: flex;
   align-items: center;
   justify-content: center;
-img{
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
+
+  img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+  }
 }
-}
-::ng-deep .mat-button-wrapper{
-  background: transparent!important;
-  border: none!important;
-  display: flex!important;
-  align-items: center!important;
-  gap: 5px!important;
-  color: #FFFF!important;
-  p{
-      font-size: 16px;
-      margin-bottom: 0px;
+
+::ng-deep .mat-button-wrapper {
+  background: transparent !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  color: #FFFF !important;
+
+  p {
+    font-size: 16px;
+    margin-bottom: 0px;
   }
 
 }
-::ng-deep .mat-menu-panel{
-  min-width: 150px!important;
-  width: 100%!important;
-  background-color: #222b45!important;
+
+::ng-deep .mat-menu-panel {
+  min-width: 150px !important;
+  width: 100% !important;
+  background-color: #222b45 !important;
 }
-::ng-deep .mat-menu-item{
-  text-align: center!important;
+
+::ng-deep .mat-menu-item {
+  text-align: center !important;
   border-bottom: 1px solid #101426 !important;
   color: #FFF !important;
 
 }
 
-::ng-deep .mat-menu-item:hover{
-  color: #598bff!important;
+::ng-deep .mat-menu-item:hover {
+  color: #598bff !important;
 }
 
 ::ng-deep .mat-tooltip {
-  color: rgb(10, 10, 1)!important;
-  background-color: #FFFF!important;
-  position: absolute!important;
-  left: -15px!important;
-  top: -25px!important;
-  min-width: 80px!important;
-  width: 100%!important;
-  text-align: center!important;
-  padding: 5px!important;
-  font-size: 13px!important;
-  display: inline-block!important;
+  color: rgb(10, 10, 1) !important;
+  background-color: #FFFF !important;
+  position: absolute !important;
+  left: -15px !important;
+  top: -25px !important;
+  min-width: 90px !important;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 5px 10px !important;
+  font-size: 14px !important;
+  line-height: 26px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  display: inline-block !important;
+  text-align: start !important;
+  font-weight: 500 !important;
+  border: 1px solid #101426 !important;
+}
+
+
+.settings {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  background-color: #FFFF;
+  height: 40px;
+  width: 35px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover{
+    background-color: #ffffff0e;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
 }

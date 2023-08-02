@@ -4,6 +4,7 @@ import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import { FormControl } from '@angular/forms';
 import { MENU_ITEMS } from './pages-menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pages',
@@ -18,7 +19,7 @@ export class PagesComponent implements OnInit {
   
   
 
-  constructor(private headerService: HeaderService) {
+  constructor(private headerService: HeaderService, private router:Router) {
     this.myBooleanValue = this.headerService.getBooleanValue();
    }
 
@@ -41,9 +42,27 @@ sideMenuHide() {
 toggleSubmenu(data:any){
   // this.submenu= !this.submenu
   data.expanded = !data.expanded
+  console.log(data.expanded)
+  this.menuData.map(elm=> {
+    if(elm.title !==data.title){
+      elm.expanded = false;
+    }
+  })
   if(data.expanded){
     this.sideNav = true;
   }
-  return data
+  return data.expanded
+}
+whitOutSubmenuClick(link:String){
+  this.router.navigate([`${link}`])
+}
+
+
+getTooltipContent(data:any){
+  let tooltip = `${data.title}\n`
+    for (const item of data.children) {
+      tooltip += item.title + '\n';
+    }
+    return tooltip;
 }
 }

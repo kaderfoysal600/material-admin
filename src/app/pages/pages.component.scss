@@ -489,8 +489,93 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 100;
   &:hover{
     background-color: #ffffff0e;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
+}
+
+.settings-main{
+  position: fixed;
+  top: 60px;
+  right: 0px;
+  width: 200px;
+  z-index: 10;
+  background-color: #FFFF;
+  height: 100vh;
+  padding: 20px;
+}
+
+
+.settings-hide{
+  position: fixed;
+  top: 60px;
+  right: -240px;
+  width: 200px;
+  z-index: 10;
+  background-color: #FFFF;
+  height: 100vh;
+  padding: 20px;
+}
+
+.settings-open{
+right:0px;
+transition: all 0.3s linear;
+}
+
+
+///
+.example-section{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+::ng-deep .mat-radio-button{
+  display: block!important;
+  margin-bottom: 10px!important;
+}
+
+
+
+//theme
+#theme-white,
+#theme-blue,
+#theme-orange,
+#theme-purple {
+  width:20px;
+  height: 20px;
+  border-radius: 50%; /* Makes the divs circular */
+  margin: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+#theme-white {
+  background-color: white;
+}
+
+#theme-blue {
+  background-color: blue;
+}
+
+#theme-orange {
+  background-color: orange;
+}
+
+#theme-purple{
+  background-color: purple;
+}
+//content
+.content.theme-purple{
+  background-color: palevioletred;
+}
+
+.content.theme-blue{
+  background-color: blue;
+}
+.content.theme-orange {
+  background-color: orange;
 }

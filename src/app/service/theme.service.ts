@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private activeTheme = 'theme-default'; // Default theme
+  private activeTheme = new BehaviorSubject<string>('theme-default');
+  public themeChanged: Observable<string> = this.activeTheme.asObservable();
   constructor() { }
 
 
   setActiveTheme(theme: string) {
-    this.activeTheme = theme;
+    this.activeTheme.next(theme);
   }
 
   getActiveTheme() {
-    return this.activeTheme;
+    return this.activeTheme.getValue();
   }
 }

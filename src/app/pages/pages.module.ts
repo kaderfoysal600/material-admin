@@ -7,6 +7,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -19,7 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatMenuModule,
     MatButtonModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatRadioModule
   ]
 })
 export class PagesModule { }

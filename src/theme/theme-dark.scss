@@ -1,0 +1,13 @@
+/* Colors */
+$primary-color: #17a2b8;
+$secondary-color: #6c757d;
+$background-color: #343a40;
+$text-color: #f8f9fa;
+
+/* Apply the colors */
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+/* Add more specific styles for components as needed */

@@ -6,9 +6,20 @@
 .total-elm{
     padding: 10px 15px;
     border-radius: 5px;
-    background-color: #222b45;
+ 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.total-elm.theme-light{
+    background-color: #FFFF;
+}
+.total-elm.theme-dark{
+    background-color: #353535;
+}
+.total-elm.theme-cosmic{
+    background-color: #222b45;
+}
+
+
 .total-elm-container{
     display: flex;
     align-items: center;

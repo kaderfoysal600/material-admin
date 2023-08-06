@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewEncapsulation , HostListener} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
 import { HeaderService } from '../service/header.service';
-import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
-import {MatButtonModule} from '@angular/material/button';
+import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MENU_ITEMS } from './pages-menu';
 import { Router } from '@angular/router';
 import { ThemeService } from '../service/theme.service';
+import { StaticThemeService } from '../service/static-theme.service';
 
 @Component({
   selector: 'app-pages',
@@ -18,90 +19,113 @@ export class PagesComponent implements OnInit {
   submenu = false;
   myBooleanValue: boolean;
   settingsToggle = false;
+  settingsLeftToggle = false;
   favoriteSeason: string;
   seasons: any[] = [
     {
-      value: 'theme-default',
-      viewValue: 'Theme Default'
+      value: 'theme-light',
+      viewValue: 'Light Mode'
     },
     {
       value: 'theme-dark',
-      viewValue: 'Theme Dark'
+      viewValue: 'Dark Mode'
     },
     {
-      value: 'theme-blue',
-      viewValue: 'Theme Blue'
+      value: 'theme-cosmic',
+      viewValue: 'Cosmic'
     }
   ];
-  storedTheme:string = localStorage.getItem('theme-color')
+  sidearLeft = false;
+  sidearRight = true;
+  sideNavLeft = true;
+  sideNavRight = true;
 
-  constructor(private headerService: HeaderService, private router:Router, private themeService: ThemeService) {
+  storedTheme: string = localStorage.getItem('theme-color')
+
+  constructor(private headerService: HeaderService,
+    private router: Router,
+    private themeService: ThemeService,
+    private staticThemeService: StaticThemeService) {
     this.myBooleanValue = this.headerService.getBooleanValue();
-   }
+  }
 
   ngOnInit(): void {
     this.toggleSubmenu(true)
   }
 
-  setTheme(theme:any){
+  onRadioChange(theme: string) {
     localStorage.setItem('theme-color', theme)
     this.storedTheme = localStorage.getItem('theme-color')
+    this.staticThemeService.setTheme(theme);
   }
- /**
-   * SideNavToggle()
-   */
- sideNavToggle() {
-  this.sideNav = !this.sideNav;
-}
+  /**
+    * SideNavToggle()
+    */
+  sideNavToggle() {
+    this.sideNav = !this.sideNav;
+  }
 
-sideMenuHide() {
-  this.sideNav = false;
-}
+  sideMenuHide() {
+    this.sideNav = false;
+  }
 
-toggleSubmenu(data:any){
-  // this.submenu= !this.submenu
-  data.expanded = !data.expanded
-  console.log(data.expanded)
-  this.menuData.map(elm=> {
-    if(elm.title !==data.title){
-      elm.expanded = false;
+  toggleSubmenu(data: any) {
+    // this.submenu= !this.submenu
+    data.expanded = !data.expanded
+    console.log(data.expanded)
+    this.menuData.map(elm => {
+      if (elm.title !== data.title) {
+        elm.expanded = false;
+      }
+    })
+    if (data.expanded) {
+      this.sideNav = true;
     }
-  })
-  if(data.expanded){
-    this.sideNav = true;
+    return data.expanded
   }
-  return data.expanded
-}
-whitOutSubmenuClick(link:String){
-  this.router.navigate([`${link}`])
-}
+  whitOutSubmenuClick(link: String) {
+    this.router.navigate([`${link}`])
+  }
 
 
-getTooltipContent(data:any){
-  let tooltip = `${data.title}\n`
+  getTooltipContent(data: any) {
+    let tooltip = `${data.title}\n`
     for (const item of data.children) {
       tooltip += item.title + '\n';
     }
     return tooltip;
-}
+  }
 
-settingsClicked(){
-  this.settingsToggle = !this.settingsToggle
-}
+  settingsClicked() {
+    if (this.sidearRight) {
+      this.settingsToggle = !this.settingsToggle,
+      console.log('this.settingsToggle' , this.settingsToggle)
+    }
+    else if (!this.sidearRight) {
+      this.settingsLeftToggle = !this.settingsLeftToggle
+      console.log('this.sideNavRight' , this.sideNavRight)
+    }
+    
+  }
 
+  onSidebarLeft(event,value: String) {
+    event.preventDefault();
+    if (value == "left") {
+      this.sidearLeft = true;
+      this.sidearRight = false;
+      this.sideNavLeft = false;
+      this.sideNavRight = true;
+    }
+  }
 
-onRadioChange(theme: string) {
-  // You can use the selectedValue here or perform any other actions
-  console.log('Selected value:', theme);
-  this.themeService.setActiveTheme(theme);
-  // Example: Apply theme based on selected value
-  // if (selectedValue === 'Light_mode') {
-  //   // Apply light theme
-  // } else if (selectedValue === 'Dark_mode') {
-  //   // Apply dark theme
-  // } else if (selectedValue === 'Cosmic_mode') {
-  //   // Apply cosmic theme
-  // }
-}
+  onSidebarRight(event,value: String) {
+    event.preventDefault();
+    if (value == "right") {
+      this.sidearLeft = false;
+      this.sidearRight = true;
+      this.sideNavLeft = true;
+      this.sideNavRight = false;
+    }
+  }
 
 }

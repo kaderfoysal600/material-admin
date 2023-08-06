@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header {{storedTheme}}">
   <div class="container">
     <header class="header-main">
       <div class="logo">
@@ -22,10 +22,16 @@
     </header>
   </div>
 </div>
-<div class="dashboard-page-render content {{storedTheme}}" >
-  <div class="page-render-area-main" [ngClass]="{'p-100px': sideNav == false}">
+<div class="dashboard-page-render content {{storedTheme}}">
+  <div [ngClass]="{
+    'page-render-area-left': sideNavLeft,
+    'page-render-area-right': !sideNavLeft && sideNav,
+    'p-100': !sideNav && sideNavLeft,
+    'p-l-100': !sideNav && !sideNavLeft
+    
+  }">
     <!---side-nav-->
-    <div class="side-nav" [ngClass]="{'w-100px side-nav-active': sideNav == false}">
+    <div class="side-nav {{storedTheme}}" [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
       <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
         <div class="menu">
           <ul *ngFor="let data of menuData">
@@ -67,37 +73,30 @@
       </div>
     </div>
 
-    <div class="settings" (click)="settingsClicked()">
+    <div class="settings " [ngClass]="{'settings-button-left': sidearLeft == true , 'settings-button-left-first': settingsLeftToggle == false && sidearLeft == true } " (click)="settingsClicked()">
       <mat-icon>settings</mat-icon>
     </div>
-
-    <div class="settings-main"  [ngClass]="settingsToggle? 'settings-open': 'settings-hide'">
-      <section class="example-section">
-        <label id="example-radio-group-label">Theme Option</label>
-        <mat-radio-group
-          aria-labelledby="example-radio-group-label"
-          class="example-radio-group"
-          [(ngModel)]="favoriteSeason" (change)="onRadioChange(favoriteSeason)">
-          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season.value" >
-            {{season.viewValue}}
-          </mat-radio-button>
-        </mat-radio-group>
-        <div>Your favorite season is: {{favoriteSeason}}</div>
-      </section>
-
-
-      <div class="static-theme">
-        <p>{{storedTheme}}</p>
-        <div id="theme-white" (click)="setTheme('theme-white')"></div>
-        <div id="theme-blue" (click)="setTheme('theme-blue')"></div>
-        <div id="theme-orange" (click)="setTheme('theme-orange')"></div>
-        <div id="theme-purple" (click)="setTheme('theme-purple')"></div>
+    <div >
+      <div class="settings-main {{storedTheme}}" [ngClass]="settingsLeftToggle ? 'settings-left-open': 'settings-left-hide'" [ngClass]="settingsToggle ? 'settings-open': 'settings-hide'" [ngClass]="sidearLeft?  'settings-open-left': 'settings-open-right'">
+        <div class="example-section">
+          <label id="example-radio-group-label">Theme Option</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="favoriteSeason" (change)="onRadioChange(favoriteSeason)">
+            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season.value">
+              {{season.viewValue}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div>Your favorite season is: {{favoriteSeason}}</div>
+        </div>
+        <mat-checkbox [checked]="sidearLeft" (click)="onSidebarLeft($event,'left')">Settings Left Version</mat-checkbox>
+        <mat-checkbox [checked]="sidearRight" (click)="onSidebarRight($event,'right')">Settings Right Version</mat-checkbox>
       </div>
+
     </div>
 
     <!--all-page-render-->
     <div class="all-page-render">
-      <router-outlet ></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

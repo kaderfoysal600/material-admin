@@ -1,13 +1,9 @@
 /* Colors */
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$background-color: #557799;
-$text-color: #343a40;
-
-/* Apply the colors */
-body {
-  background-color: $background-color;
-  color: $text-color;
-}
-
-/* Add more specific styles for components as needed */
+$default_primary-color: #FFFFFF;
+$default_secondary-color:  linear-gradient(to right,#ff708d,#ff3d71);
+$default_background-color: #EDF0F7;
+$default_text-color: #232645;
+$default_sidenav_bg: #FFFF;
+$default_sidenav_color: #222b45;
+$default_sidenav_hover:#598bff;
+$default_header_shadow:0 .5rem 1rem 0 rgba(44, 51, 73, .1);

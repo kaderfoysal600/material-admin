@@ -1,8 +1,9 @@
-// @import 'src/theme/variables';
+@import 'src/theme/theme-default.scss';
+@import 'src/theme/theme-dark.scss';
+@import 'src/theme/theme-blue.scss';
 
 .header-area {
   display: none;
-  background-color: #fff;
   padding: 10px 20px;
   box-sizing: border-box;
   box-shadow: 0 3px 5px 0 rgb(0 0 0 / 10%);
@@ -43,7 +44,6 @@
   text-transform: uppercase;
   //   font-family: $font-en-nunito;
   font-style: normal;
-  color: #111;
   font-weight: 700;
   font-size: 23px;
   line-height: 28px;
@@ -55,7 +55,6 @@
 }
 
 .menu-bar span {
-  color: #FFFF;
   font-size: 25px;
   cursor: pointer;
 }
@@ -67,16 +66,21 @@
   //max-height: auto;
 }
 
-.page-render-area-main {
+.page-render-area-left {
   padding-left: 250px;
   width: 100%;
   box-sizing: border-box;
   // transition: all 0.3s linear;
 }
 
+.page-render-area-right {
+  padding-right: 250px;
+  width: 100%;
+  box-sizing: border-box;
+  // transition: all 0.3s linear;
+}
 .side-nav {
   position: fixed;
-  left: 0;
   top: 60px;
   width: 250px;
   box-sizing: border-box;
@@ -84,17 +88,46 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  // transition: all 0.3s linear;
   z-index: 10;
 }
-
+.sidenavRight{
+right: 0;
+}
+.sidenavLeft{
+  left: 0;
+}
+.side-nav.theme-light{
+background-color: $default_sidenav_bg;
+a{
+  color: $default_sidenav_color;
+  &:hover{
+    color: $default_sidenav_hover;
+      }
+}
+}
+.side-nav.theme-dark{
+  background-color: $dark_sidenav_bg;
+a{
+  color: $dark_sidenav_color;
+  &:hover{
+    background-color:$dark_sidenav_hover;
+  }
+}
+}
+.side-nav.theme-cosmic{
+  background-color: $blue_sidenav_bg;
+a{
+  color: $blue_sidenav_color;
+  &:hover{
+color: $blue_sidenav_hover;
+  }
+}
+}
 .side-nav::after {
   content: "";
   display: block;
   width: 100%;
   height: 100%;
-  //background-color: rgb(0 0 0 / 80%);
-  background-color: #222b45;
   z-index: -10;
   position: absolute;
   top: 0;
@@ -115,8 +148,11 @@
 //   display: none;
 // }
 
-.p-100px {
+.p-100 {
   padding-left: 88px;
+}
+.p-l-100{
+  padding-right: 88px!important;
 }
 
 .w-100px {
@@ -134,7 +170,6 @@
   }
 
   h2 {
-    color: #FFFF;
     font-weight: 500;
   }
 }
@@ -161,7 +196,6 @@
 
 .al-center .menu-bar span {
   width: 100%;
-  background-color: #00abc6;
   box-sizing: border-box;
   padding: 10px 15px;
   height: 40px;
@@ -169,7 +203,6 @@
 }
 
 .side-nav-top .menu-bar span {
-  color: #fff;
 }
 
 .side-nav .logo-hide {
@@ -192,7 +225,6 @@
 .log-right a {
   text-transform: uppercase;
   font-style: normal;
-  color: #fff;
   font-weight: 600;
   font-size: 23px;
   line-height: 28px;
@@ -226,7 +258,6 @@
   align-items: center;
   justify-content: flex-start;
   gap: 15px;
-  color: #fff;
   //   font-family: $font-en-nunito;
   font-weight: 400;
   font-size: 14px;
@@ -252,7 +283,6 @@
     font-size: 20px;
     height: 20px;
     width: 20px;
-    color: #8f9bb3;
   }
 }
 
@@ -299,13 +329,9 @@
   opacity: 1;
 }
 
-.menu ul li :hover {
-  color: #598bff;
-}
-
-.menu ul li .link-active:hover {
-  color: #3366ff;
-}
+// .menu ul li .link-active {
+//   color: #3366ff;
+// }
 
 .all-page-render {
   margin-top: 60px;
@@ -378,17 +404,32 @@
 }
 
 .header {
-  background-color: #2e3a59;
   height: 60px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  box-shadow: 0 .5rem 1rem 0 #1a1f33;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+}
+
+.header.theme-light{
+  background-color: $default_primary-color;
+  color: $default_text-color;
+  box-shadow: $default_header_shadow;
+}
+.header.theme-dark{
+  background-color: $dark_primary-color;
+  color: $dark_text-color;
+  box-shadow: $dark_header_shadow;
+}
+.header.theme-cosmic{
+  background-color: $blue_primary-color;
+  color: $blue_text-color;
+  box-shadow: $blue_header_shadow;
 }
 
 .header-main {
@@ -401,7 +442,6 @@
 .logo {
   display: flex;
   align-items: center;
-  color: #FFF;
   gap: 15px;
 
   h2 {
@@ -429,7 +469,6 @@
   display: flex !important;
   align-items: center !important;
   gap: 5px !important;
-  color: #FFFF !important;
 
   p {
     font-size: 16px;
@@ -447,13 +486,12 @@
 ::ng-deep .mat-menu-item {
   text-align: center !important;
   border-bottom: 1px solid #101426 !important;
-  color: #FFF !important;
 
 }
 
-::ng-deep .mat-menu-item:hover {
-  color: #598bff !important;
-}
+// ::ng-deep .mat-menu-item:hover {
+//   color: #598bff !important;
+// }
 
 ::ng-deep .mat-tooltip {
   color: rgb(10, 10, 1) !important;
@@ -480,7 +518,6 @@
   top: 50%;
   right: 0;
   transform: translate(0, -50%);
-  background-color: #FFFF;
   height: 40px;
   width: 35px;
   border-top-left-radius: 5px;
@@ -490,40 +527,100 @@
   justify-content: center;
   cursor: pointer;
   z-index: 100;
+  color: #8E98B3;
+  background-color: #FFFF;
+  transition: all 0.3s linear;
   &:hover{
     background-color: #ffffff0e;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
 
+.settings-button-left{
+  left: 240px!important;
+  right: auto!important;
+  transition: all 0.3s linear;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.settings-button-left-first{
+  left: 0;
+  right: auto!important;
+  transition: all 0.3s linear;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.settings-main.theme-light{
+  background-color: $default_sidenav_bg;
+  a{
+    color: $default_sidenav_color;
+    &:hover{
+      color: $default_sidenav_hover;
+        }
+  }
+  }
+.settings-main.theme-dark{
+    background-color: $dark_sidenav_bg;
+    box-shadow: $dark_settings_bar_shadow;
+  a{
+    color: $dark_sidenav_color;
+    &:hover{
+      background-color:$dark_sidenav_hover;
+    }
+  }
+  }
+.settings-main.theme-cosmic{
+  background-color: $blue_sidenav_bg;
+  box-shadow: $blue_header_shadow;
+  a{
+    color: $blue_sidenav_color;
+    &:hover{
+  color: $blue_sidenav_hover;
+    }
+  }
+  }
+
 .settings-main{
   position: fixed;
   top: 60px;
-  right: 0px;
+  // right: 0px;
   width: 200px;
   z-index: 10;
-  background-color: #FFFF;
   height: 100vh;
   padding: 20px;
 }
 
 
 .settings-hide{
-  position: fixed;
-  top: 60px;
   right: -240px;
-  width: 200px;
-  z-index: 10;
   background-color: #FFFF;
-  height: 100vh;
-  padding: 20px;
 }
-
 .settings-open{
-right:0px;
-transition: all 0.3s linear;
-}
+  right:0px;
+  transition: all 0.3s linear;
+  }
 
+.settings-open-left{
+transition: all 0.3s linear;
+left: 0;
+}
+.settings-open-right{
+  transition: all 0.3s linear;
+  right: 0;
+  }
+  
+  .settings-left-open{
+    left: 0px;
+    transition: all 0.3s linear;
+  }
+  .settings-left-hide{
+    left: -240px;
+  }
+  
 
 ///
 .example-section{
@@ -540,42 +637,45 @@ transition: all 0.3s linear;
 
 
 
-//theme
-#theme-white,
-#theme-blue,
-#theme-orange,
-#theme-purple {
-  width:20px;
-  height: 20px;
-  border-radius: 50%; /* Makes the divs circular */
-  margin: 10px;
-  cursor: pointer;
-  border: 1px solid black;
-}
+// //theme
+// #theme-white,
+// #theme-blue,
+// #theme-orange,
+// #theme-purple {
+//   width:20px;
+//   height: 20px;
+//   border-radius: 50%; /* Makes the divs circular */
+//   margin: 10px;
+//   cursor: pointer;
+//   border: 1px solid black;
+// }
 
-#theme-white {
-  background-color: white;
-}
+// #theme-white {
+//   background-color: white;
+// }
 
-#theme-blue {
-  background-color: blue;
-}
+// #theme-blue {
+//   background-color: blue;
+// }
 
-#theme-orange {
-  background-color: orange;
-}
+// #theme-orange {
+//   background-color: orange;
+// }
 
-#theme-purple{
-  background-color: purple;
-}
+// #theme-purple{
+//   background-color: purple;
+// }
 //content
-.content.theme-purple{
-  background-color: palevioletred;
+.content.theme-light{
+  background-color: $default_background-color;
+  color: $default_text-color;
 }
 
-.content.theme-blue{
-  background-color: blue;
+.content.theme-dark{
+  background-color:$dark_background-color;
+  color: $dark_text-color;
 }
-.content.theme-orange {
-  background-color: orange;
+.content.theme-cosmic {
+  background-color:$blue_background-color;
+  color: $blue_text-color;
 }

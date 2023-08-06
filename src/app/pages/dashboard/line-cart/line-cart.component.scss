@@ -2,15 +2,28 @@
     display: block;
     // width: 400px;
     height: auto;
-    background-color: #222b45;
+
     padding: 10px;
     border-radius: 5px;
     color: #FFFF;
 }
+.card.theme-light{
+    background-color: #ffff;
+    border: 1px solid #e4e9f2;
+}
+.card.theme-cosmic{
+    background-color: #222b45;
+    border :1px solid #101426;
+}
+.card.theme-dark{
+    background-color: #353535;
+    border :1px solid #141414;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, .2), 0px 1px 1px 0px rgba(0, 0, 0, .14), 0px 1px 3px 0px rgba(0, 0, 0, .12);
+}
 .chart-container{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2,48%);
+   justify-content: space-between;
 }
 .page-header{
     margin-top: 20px;

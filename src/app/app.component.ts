@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StaticThemeService } from './service/static-theme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'material-admin';
+  // currentTheme: string;
+  storedTheme:string = localStorage.getItem('theme-color')
+  constructor(private staticThemeService: StaticThemeService) {
+    // this.currentTheme = this.staticThemeService.getTheme();
+   }
 }

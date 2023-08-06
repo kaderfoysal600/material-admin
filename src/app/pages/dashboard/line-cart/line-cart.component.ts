@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart, ChartConfiguration, ChartItem, registerables} from 'chart.js'
+import { StaticThemeService } from 'src/app/service/static-theme.service';
 
 @Component({
   selector: 'app-line-cart',
@@ -14,11 +15,15 @@ export class LineCartComponent implements OnInit {
   public pieChart: any;
   public scatterChart: any;
 
-  constructor() { }
+  storedTheme:string 
+  constructor(private themeService: StaticThemeService) { }
 
   ngOnInit(): void {
     Chart.register(...registerables);
     this.createChart()
+    this.themeService.theme$.subscribe(theme => {
+    this.storedTheme = theme;
+    });
   }
 
 

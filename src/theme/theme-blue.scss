@@ -1,16 +1,9 @@
 /* Colors */
-$primary-color: #00a4e4;
-$secondary-color: #6c757d;
-$background-color: #8195ad;
-$text-color: #333;
-
-/* Apply the colors */
-body {
-  background-color: $background-color;
-  color: $text-color;
-}
-*{
-  background-color: $background-color;
-  color: $text-color;
-}
-/* Add more specific styles for components as needed */
+$blue_primary-color: #232645;
+$blue_secondary-color:  linear-gradient(to right,#ff708d,#ff3d71);
+$blue_background-color: #161530;
+$blue_text-color: #FFFFFF;
+$blue_sidenav_bg: #232645;
+$blue_sidenav_color: #FFFF;
+$blue_sidenav_hover:#598bff;
+$blue_header_shadow:0 .5rem 1rem 0 #1a1f33;

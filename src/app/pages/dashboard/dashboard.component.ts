@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StaticThemeService } from 'src/app/service/static-theme.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  storedTheme:string 
+  constructor(private themeService: StaticThemeService) { }
 
   ngOnInit(): void {
+    this.themeService.theme$.subscribe(theme => {
+      this.storedTheme = theme;
+    });
+   
   }
 
 }

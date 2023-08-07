@@ -492,13 +492,12 @@ color: $blue_sidenav_hover;
 // ::ng-deep .mat-menu-item:hover {
 //   color: #598bff !important;
 // }
-
 ::ng-deep .mat-tooltip {
   color: rgb(10, 10, 1) !important;
   background-color: #FFFF !important;
-  position: absolute !important;
-  left: -15px !important;
-  top: -25px !important;
+  // position: absolute !important;
+  // left: -15px !important;
+  // top: -25px !important;
   min-width: 90px !important;
   width: 100% !important;
   text-align: center !important;
@@ -510,9 +509,8 @@ color: $blue_sidenav_hover;
   text-align: start !important;
   font-weight: 500 !important;
   border: 1px solid #101426 !important;
+  max-width: 120px!important;
 }
-
-
 .settings {
   position: fixed;
   top: 50%;
@@ -546,7 +544,7 @@ color: $blue_sidenav_hover;
   border-bottom-right-radius: 5px;
 }
 .settings-button-left-first{
-  left: 0;
+  left: 0!important;
   right: auto!important;
   transition: all 0.3s linear;
   border-top-left-radius: 0px;
@@ -598,6 +596,7 @@ color: $blue_sidenav_hover;
 .settings-hide{
   right: -240px;
   background-color: #FFFF;
+  transition: all 0.3s linear;
 }
 .settings-open{
   right:0px;
@@ -619,6 +618,7 @@ left: 0;
   }
   .settings-left-hide{
     left: -240px;
+    transition: all 0.3s linear;
   }
   
 

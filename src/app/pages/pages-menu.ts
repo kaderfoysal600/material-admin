@@ -2,7 +2,7 @@ export const MENU_ITEMS: any[] = [
   {
     title: 'E-commerce',
     icon: 'shopping_cart',
-    link: '/',
+    path: '/',
     home: true,
     
   },
@@ -17,24 +17,24 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Stepper',
-        link: '/c',
+        path: 'c',
       },
       {
         title: 'List',
-        link: '/d',
+        path: 'd',
       },
       {
         title: 'Infinite List',
-        link: '/e',
+        path: 'e',
       },
       {
         title: 'Accordion',
-        link: '/f',
+        path: 'f',
       },
       {
         title: 'Tabs',
         pathMatch: 'prefix',
-        link: '/e',
+        path: 'e',
       },
     ],
   },
@@ -45,19 +45,19 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Form Inputs',
-        link: '/g',
+        path: 'form-input',
       },
       {
         title: 'Form Layouts',
-        link: '/h',
+        path: 'h',
       },
       {
         title: 'Buttons',
-        link: '/i',
+        path: 'i',
       },
       {
         title: 'Datepicker',
-        link: '/j',
+        path: 'j',
       },
     ],
   },
@@ -69,27 +69,27 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Calendar',
-        link: '/pages/extra-components/calendar',
+        path: 'pages/extra-components/calendar',
       },
       {
         title: 'Progress Bar',
-        link: '/pages/extra-components/progress-bar',
+        path: 'pages/extra-components/progress-bar',
       },
       {
         title: 'Spinner',
-        link: '/pages/extra-components/spinner',
+        path: 'pages/extra-components/spinner',
       },
       {
         title: 'Alert',
-        link: '/pages/extra-components/alert',
+        path: 'pages/extra-components/alert',
       },
       {
         title: 'Calendar Kit',
-        link: '/pages/extra-components/calendar-kit',
+        path: 'pages/extra-components/calendar-kit',
       },
       {
         title: 'Chat',
-        link: '/pages/extra-components/chat',
+        path: 'pages/extra-components/chat',
       },
     ],
   },
@@ -100,19 +100,19 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Google Maps',
-        link: '/pages/maps/gmaps',
+        path: 'pages/maps/gmaps',
       },
       {
         title: 'Leaflet Maps',
-        link: '/pages/maps/leaflet',
+        path: 'pages/maps/leaflet',
       },
       {
         title: 'Bubble Maps',
-        link: '/pages/maps/bubble',
+        path: 'pages/maps/bubble',
       },
       {
         title: 'Search Maps',
-        link: '/pages/maps/searchmap',
+        path: 'pages/maps/searchmap',
       },
     ],
   },
@@ -123,15 +123,15 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Echarts',
-        link: '/pages/charts/echarts',
+        path: 'pages/charts/echarts',
       },
       {
         title: 'Charts.js',
-        link: '/pages/charts/chartjs',
+        path: 'pages/charts/chartjs',
       },
       {
         title: 'D3',
-        link: '/pages/charts/d3',
+        path: 'pages/charts/d3',
       },
     ],
   },
@@ -142,11 +142,11 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'TinyMCE',
-        link: '/pages/editors/tinymce',
+        path: 'pages/editors/tinymce',
       },
       {
         title: 'CKEditor',
-        link: '/pages/editors/ckeditor',
+        path: 'pages/editors/ckeditor',
       },
     ],
   },
@@ -157,11 +157,11 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Smart Table',
-        link: '/pages/tables/',
+        path: 'pages/tables/',
       },
       {
         title: 'Tree Grid',
-        link: '/pages/tables/tree-grid',
+        path: 'pages/tables/tree-grid',
       },
     ],
   },
@@ -172,7 +172,7 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: '404',
-        link: '/pages/miscellaneous/404',
+        path: 'pages/miscellaneous/404',
       },
     ],
   },
@@ -183,19 +183,19 @@ export const MENU_ITEMS: any[] = [
     children: [
       {
         title: 'Login',
-        link: '/auth/login',
+        path: 'auth/login',
       },
       {
         title: 'Register',
-        link: '/auth/register',
+        path: 'auth/register',
       },
       {
         title: 'Request Password',
-        link: '/auth/request-password',
+        path: 'auth/request-password',
       },
       {
         title: 'Reset Password',
-        link: '/auth/reset-password',
+        path: 'auth/reset-password',
       },
     ],
   },

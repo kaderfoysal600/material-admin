@@ -1,0 +1,14 @@
+::ng-deep  .ck.ck-editor {
+    // max-width: 800px;
+    margin: 0px 10px;
+}
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 350px;
+
+    color: #000;
+}
+
+
+::ng-deep  .ck.ck-balloon-panel.ck-powered-by-balloon .ck.ck-powered-by {
+    display: none!important;
+}

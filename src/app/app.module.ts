@@ -11,7 +11,7 @@ import { ThemeDirective } from './theme.directive';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ThemeDirective
+    ThemeDirective,
   ],
   imports: [
     BrowserModule,

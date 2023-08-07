@@ -19,7 +19,7 @@ export class PagesComponent implements OnInit {
   submenu = false;
   myBooleanValue: boolean;
   settingsToggle = false;
-  settingsLeftToggle = false;
+  settingsLeftToggle = true;
   favoriteSeason: string;
   seasons: any[] = [
     {
@@ -51,6 +51,7 @@ export class PagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.toggleSubmenu(true)
+    console.log('this.settingsToggle', this.settingsToggle)
   }
 
   onRadioChange(theme: string) {
@@ -64,7 +65,10 @@ export class PagesComponent implements OnInit {
   sideNavToggle() {
     this.sideNav = !this.sideNav;
   }
-
+  onMiniSidebarClicked(e){
+    e.preventDefault()
+    this.sideNav = false;
+  }
   sideMenuHide() {
     this.sideNav = false;
   }
@@ -98,13 +102,12 @@ export class PagesComponent implements OnInit {
 
   settingsClicked() {
     if (this.sidearRight) {
-      this.settingsToggle = !this.settingsToggle,
-      console.log('this.settingsToggle' , this.settingsToggle)
+      this.settingsToggle = !this.settingsToggle
     }
-    else if (!this.sidearRight) {
+    else {
       this.settingsLeftToggle = !this.settingsLeftToggle
-      console.log('this.sideNavRight' , this.sideNavRight)
     }
+    console.log('this.settingsToggle', this.settingsToggle)
     
   }
 

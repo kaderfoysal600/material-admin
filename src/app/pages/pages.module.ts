@@ -10,10 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
 
 @NgModule({
   declarations: [
-    PagesComponent
+    PagesComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BreadcrumbModule
   ]
 })
 export class PagesModule { }

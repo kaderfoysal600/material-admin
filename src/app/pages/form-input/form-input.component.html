@@ -1,0 +1,42 @@
+<form action="" class="main-form {{storedTheme}}">
+    <div class="name-input">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" (click)="picker.open()">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</form>

@@ -1,0 +1,49 @@
+@import 'src/theme/theme-default.scss';
+@import 'src/theme/theme-dark.scss';
+@import 'src/theme/theme-blue.scss';
+
+form{
+    max-width: 500px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1,99%);
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    .name-input{
+        display: grid;
+        grid-template-columns: repeat(2,49%);
+        justify-content: space-between;
+    }
+}
+
+.main-form.theme-light{
+    background-color: $default_sidenav_bg;
+    color: $default_text-color;
+    ::ng-deep .mat-form-field-label{
+        color: $default_placeholder_color;
+    }
+}
+
+.main-form.theme-dark{
+    background-color: $dark_card_color;
+    color: $dark_text-color;
+    ::ng-deep .mat-form-field-label{
+        color: $dark_placeholder_color;
+    }
+}
+
+.main-form.theme-cosmic{
+    background-color: $blue_sidenav_bg;
+    color: $blue_text-color;
+    ::ng-deep .mat-form-field-label{
+        color: $blue_placeholder_color;
+    }
+}
+::ng-deep .mat-form-field-infix{
+    display: flex!important;
+    // align-items: center!important;
+}
+::ng-deep .mat-icon{
+    margin: auto!important;;
+}

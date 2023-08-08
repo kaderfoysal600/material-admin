@@ -2,7 +2,7 @@ export const MENU_ITEMS: any[] = [
   {
     title: 'E-commerce',
     icon: 'shopping_cart',
-    path: '/',
+    path: 'dashboard',
     home: true,
     
   },

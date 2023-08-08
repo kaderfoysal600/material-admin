@@ -57,7 +57,7 @@
               </div>
 
               <a *ngIf='!sideNav && !data.children'
-                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) :whitOutSubmenuClick(data.link))"
+                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) :whitOutSubmenuClick(data.path))"
                 #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
                 <span class="material-icons icon">{{data.icon}}
                 </span>

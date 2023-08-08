@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
+import { BreadcrumbService } from '../service/breadcrumb.service';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
       {
         path: 'pages/tables',
         loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule),
-        data: { breadcrumb: 'Smart Table' },
+
       },
       {
         path: 'external',
@@ -31,7 +32,7 @@ const routes: Routes = [
       {
         path: 'form-input',
         loadChildren: () => import('./form-input/form-input.module').then(m => m.FormInputModule),
-        data: { breadcrumb: 'Form Input' },
+
       },
       {
         path: 'pages/editors/ckeditor',
@@ -44,12 +45,19 @@ const routes: Routes = [
         loadChildren: () => import('./tinymce/tinymce.module').then(m => m.TinymceModule),
         data: { breadcrumb: 'tinymce' },
       },
+      {
+        path: 'pages/maps',
+        loadChildren: () => import('./maps/maps.module')
+          .then(m => m.MapsModule),
+
+      },
     ]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  // providers: [BreadcrumbService],
 })
 export class PagesRoutingModule { }

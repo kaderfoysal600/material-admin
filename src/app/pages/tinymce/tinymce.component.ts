@@ -18,10 +18,10 @@ export class TinymceComponent implements OnInit {
     this.settings = {
       base_url: '/tinymce',
       suffix: '.min',
-      height: 500,
-      menubar: false,
+      height: 450,
+      menubar: true,
       toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-      plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+      plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount file',
       external_plugins: {},
       setup: (editor: Editor) => {
         this.editor = editor;

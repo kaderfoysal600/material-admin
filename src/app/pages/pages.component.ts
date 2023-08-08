@@ -15,7 +15,7 @@ import { StaticThemeService } from '../service/static-theme.service';
 })
 export class PagesComponent implements OnInit {
   menuData = MENU_ITEMS
-  sideNav = true;
+  sideNav = false;
   submenu = false;
   myBooleanValue: boolean;
   settingsToggle = false;

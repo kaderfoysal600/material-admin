@@ -4,7 +4,8 @@ import { FormInputComponent } from './form-input.component';
 
 const routes: Routes = [{
   path:'',
-  component:FormInputComponent
+  component:FormInputComponent,
+  data: { breadcrumb: 'Form Input' },
 }];
 
 @NgModule({

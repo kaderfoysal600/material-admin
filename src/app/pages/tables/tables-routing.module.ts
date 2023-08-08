@@ -4,7 +4,8 @@ import { TablesComponent } from './tables.component';
 
 const routes: Routes = [{
   path:'',
-  component:TablesComponent
+  component:TablesComponent,
+  data: { breadcrumb: 'Smart Table' },
 }];
 
 @NgModule({

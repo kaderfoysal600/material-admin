@@ -7,6 +7,7 @@ import { MENU_ITEMS } from './pages-menu';
 import { Router } from '@angular/router';
 import { ThemeService } from '../service/theme.service';
 import { StaticThemeService } from '../service/static-theme.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-pages',
@@ -111,6 +112,10 @@ export class PagesComponent implements OnInit {
       this.settingsLeftToggle = !this.settingsLeftToggle
     }
     console.log('this.settingsToggle', this.settingsToggle)
+
+     interval(5000).subscribe(() => {
+      this.settingsToggle = false; // Change the value every 5 seconds
+    });
     
   }
   onSidebarLeft(event,value: String) {
@@ -131,28 +136,9 @@ export class PagesComponent implements OnInit {
       this.sideNavRight = false;
     }
   }
-
-
-
-  // @HostListener('document:click', ['$event'])
-  // onClick(event: MouseEvent) {
-  //   if (!this.elementRef.nativeElement.contains(event.target)) {
-  //     this.settingsToggle = false; // Clicked outside the sidebar, close it.
-  //   }
-  // }
-
-
   handleOutsideClick(): void {
-    // if (!this.settingsToggle) {
-    //   // this.isFocused = false;
-    //   return;
-    // }
     this.settingsToggle = false;
     this.settingsLeftToggle = false;
-    console.log( "this.settingsToggle",  this.settingsToggle);
-    
-    // this.overlay = false;
-    // this.isFocused = false;
   }
 
 }

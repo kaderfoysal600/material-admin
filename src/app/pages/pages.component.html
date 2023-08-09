@@ -38,7 +38,7 @@
           <ul *ngFor="let data of menuData">
             <li>
               <a *ngIf='sideNav' routerLink="/"
-                (click)="data.children ? toggleSubmenu(data) : whitOutSubmenuClick(data.path)" class="sumbenu"
+                (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
                 routerLinkActive="link-active">
                 <span class="material-icons icon">{{data.icon}}</span>
                 <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
@@ -57,13 +57,13 @@
               </div>
 
               <a *ngIf='!sideNav && !data.children'
-                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) :whitOutSubmenuClick(data.path))"
+                (click)="data.children ? toggleSubmenu(data, sideNav) :whitOutSubmenuClick(data.path)"
                 #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
                 <span class="material-icons icon">{{data.icon}}
                 </span>
               </a>
               <a *ngIf='!sideNav && data.children' class="submenu-parent"
-                (click)="toggleSubmenu(data.children ? toggleSubmenu(data) : whitOutSubmenuClick(data.path))"
+                (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)"
                 #tooltip="matTooltip" [matTooltip]="getTooltipContent(data)" matTooltipPosition="right">
                 <span class="material-icons icon">{{data.icon}}
                 </span>

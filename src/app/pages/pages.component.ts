@@ -50,7 +50,7 @@ export class PagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toggleSubmenu(true)
+    // this.toggleSubmenu(true)
     console.log('this.settingsToggle', this.settingsToggle)
   }
 
@@ -73,18 +73,19 @@ export class PagesComponent implements OnInit {
     this.sideNav = false;
   }
 
-  toggleSubmenu(data: any) {
+  toggleSubmenu(data: any, sideNav: boolean) {
     // this.submenu= !this.submenu
+  if(sideNav){
     data.expanded = !data.expanded
+  }
     console.log(data.expanded)
     this.menuData.map(elm => {
       if (elm.title !== data.title) {
         elm.expanded = false;
       }
     })
-    if (data.expanded) {
+
       this.sideNav = true;
-    }
     return data.expanded
   }
   whitOutSubmenuClick(link: String) {

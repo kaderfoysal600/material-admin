@@ -27,7 +27,7 @@ import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
     ReactiveFormsModule,
     MatRadioModule,
     MatCheckboxModule,
-    BreadcrumbModule
+    BreadcrumbModule,
   ]
 })
 export class PagesModule { }

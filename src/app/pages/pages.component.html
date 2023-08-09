@@ -32,54 +32,180 @@
   }">
     <!---side-nav-->
     <div class="side-nav {{storedTheme}}"
-      [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
-      <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
-        <div class="menu">
-          <ul *ngFor="let data of menuData">
-            <li>
-              <a *ngIf='sideNav' routerLink="/"
-                (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
-                routerLinkActive="link-active">
-                <span class="material-icons icon">{{data.icon}}</span>
-                <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
-                </span>
-                <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
-                <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
-              </a>
-              <div *ngIf="sideNav && data.expanded" class="submenu-content"
-                [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
-                <div class="sabmenu-main" *ngFor="let subData of data?.children">
-                  <a routerLink="{{subData?.path}}">
-                    <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
-                    </span>
-                  </a>
-                </div>
+    [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
+    <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
+      <div *ngIf="sideNav" class="menu">
+        <ul *ngFor="let data of menuData">
+          <li>
+            <a *ngIf='sideNav' routerLink="/"
+              (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
+              routerLinkActive="link-active">
+              <span class="material-icons icon">{{data.icon}}</span>
+              <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
+              </span>
+              <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
+              <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
+            </a>
+            <div *ngIf="sideNav && data.expanded" class="submenu-content"
+              [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
+              <div class="sabmenu-main" *ngFor="let subData of data?.children">
+                <a routerLink="{{subData?.path}}">
+                  <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
+                  </span>
+                </a>
               </div>
+            </div>
 
-              <a *ngIf='!sideNav && !data.children'
-                (click)="data.children ? toggleSubmenu(data, sideNav) :whitOutSubmenuClick(data.path)"
-                #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
-                <span class="material-icons icon">{{data.icon}}
-                </span>
-              </a>
-              <a *ngIf='!sideNav && data.children' class="submenu-parent"
-                (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)"
-                #tooltip="matTooltip" [matTooltip]="getTooltipContent(data)" matTooltipPosition="right">
-                <span class="material-icons icon">{{data.icon}}
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
+            <a *ngIf='!sideNav && !data.children'
+              (click)="data.children ? toggleSubmenu(data, sideNav) :whitOutSubmenuClick(data.path)"
+              #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
+              <span class="material-icons icon">{{data.icon}}
+              </span>
+            </a>
+            <a *ngIf='!sideNav && data.children' class="submenu-parent"
+              (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)"
+              #tooltip="matTooltip" [matTooltip]="getTooltipContent(data)" matTooltipPosition="right">
+              <span class="material-icons icon">{{data.icon}}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="!sideNav" class="extra-small-sidenav">
+        <ul>
+          <li  >
+            <button [matMenuTriggerFor]="Dashboard">
+               <span class="material-icons icon">shopping_cart
+              </span>
+            </button>
+            <mat-menu #Dashboard="matMenu" class="parent" >
+              <button mat-menu-item routerLink="/">Dashboard</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button [matMenuTriggerFor]="Layout"> <span class="material-icons icon">dashboard
+              </span></button>
+            <mat-menu #Layout="matMenu" class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="LayoutSub">Layout</button>
+            </mat-menu>
+            <mat-menu #LayoutSub="matMenu"  >
+              <button mat-menu-item>Stepper</button>
+              <button mat-menu-item>List</button>
+              <button mat-menu-item>Infinite List</button>
+              <button mat-menu-item>Accordion</button>
+              <button mat-menu-item>Tabs</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button  [matMenuTriggerFor]="Forms"> <span class="material-icons icon">text_format
+              </span></button>
+            <mat-menu #Forms="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="FormstSub">Forms</button>
+            </mat-menu>
+            <mat-menu #FormstSub="matMenu">
+              <button mat-menu-item routerLink="/form-input">Form Inputs</button>
+              <button mat-menu-item>Form Layouts</button>
+              <button mat-menu-item>Buttons</button>
+              <button mat-menu-item>Datepicker</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button  [matMenuTriggerFor]="extra"  > <span class="material-icons icon">settings_input_component
+              </span></button>
+            <mat-menu #extra="matMenu" class="parent parent-big">
+              <button mat-menu-item [matMenuTriggerFor]="extraSub">Extra Components</button>
+            </mat-menu>
+            <mat-menu #extraSub="matMenu" class="parent-sub-big">
+              <button mat-menu-item>Calendar</button>
+              <button mat-menu-item>Progress Bar</button>
+              <button mat-menu-item>Spinner</button>
+              <button mat-menu-item>Calendar Kit</button>
+              <button mat-menu-item>Alert</button>
+              <button mat-menu-item>Chat</button>
+
+            </mat-menu>
+          </li>
+          <li>
+            <button [matMenuTriggerFor]="Maps"> <span class="material-icons icon">map
+              </span></button>
+            <mat-menu #Maps="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="MapsSub">Maps</button>
+            </mat-menu>
+            <mat-menu #MapsSub="matMenu">
+              <button mat-menu-item routerLink="/pages/maps/gmaps">Google Maps</button>
+              <button mat-menu-item routerLink="/pages/maps/leaflet">Leaflet Maps</button>
+              <button mat-menu-item>Bubble Maps</button>
+              <button mat-menu-item>Search Maps</button>
+
+            </mat-menu>
+          </li>
+          <li>
+            <button  [matMenuTriggerFor]="Charts" > <span class="material-icons icon">bar_chart
+              </span></button>
+            <mat-menu #Charts="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="ChartsSub">Charts</button>
+            </mat-menu>
+            <mat-menu #ChartsSub="matMenu">
+              <button mat-menu-item>Echarts</button>
+              <button mat-menu-item>Charts.js</button>
+              <button mat-menu-item>D3</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button [matMenuTriggerFor]="Editors"  > <span class="material-icons icon">edit
+              </span></button>
+            <mat-menu #Editors="matMenu" class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="EditorsSub">Editors</button>
+            </mat-menu>
+            <mat-menu #EditorsSub="matMenu">
+              <button mat-menu-item routerLink="/pages/editors/tinymce">TinyMCE</button>
+              <button mat-menu-item routerLink="pages/editors/ckeditor">CKEditor</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button [matMenuTriggerFor]="Tables"> <span class="material-icons icon">table_chart
+              </span></button>
+            <mat-menu #Tables="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="TablesSub">Tables & Data</button>
+            </mat-menu>
+            <mat-menu #TablesSub="matMenu">
+              <button mat-menu-item>Smart Table</button>
+              <button mat-menu-item>Tree Grid</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button [matMenuTriggerFor]="Miscellaneous"> <span class="material-icons icon">error_outline
+              </span></button>
+            <mat-menu #Miscellaneous="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="MiscellaneousSub">Miscellaneous</button>
+            </mat-menu>
+            <mat-menu #MiscellaneousSub="matMenu">
+              <button mat-menu-item>404</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button  [matMenuTriggerFor]="Auth"> <span class="material-icons icon">lock_open
+              </span></button>
+            <mat-menu #Auth="matMenu"  class="parent">
+              <button mat-menu-item [matMenuTriggerFor]="AuthsSub">Auth</button>
+            </mat-menu>
+            <mat-menu #AuthsSub="matMenu">
+              <button mat-menu-item>Login</button>
+              <button mat-menu-item>Register</button>
+            </mat-menu>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
 
-    <div class="settings "
+
+    <div   class="settings "
       [ngClass]="{'settings-button-left': sidearLeft == true && settingsLeftToggle == true, 'settings-button-left-first': settingsLeftToggle == false && sidearLeft == true } "
       (click)="settingsClicked()">
       <mat-icon>settings</mat-icon>
     </div>
-    <div class="settings-main {{storedTheme}}"
+    <div appOutSideClick (outsideClick)="handleOutsideClick()" class="settings-main {{storedTheme}}"
       [ngClass]="settingsLeftToggle ? 'settings-left-open': 'settings-left-hide'"
       [ngClass]="settingsToggle ? 'settings-open': 'settings-hide'"
       [ngClass]="sidearLeft ?  'settings-open-left': 'settings-hide'">
@@ -104,9 +230,9 @@
 
 
     <!--all-page-render-->
-    <div class="all-page-render">
+    <div class="all-page-render" (click)="handleOutsideClick()">
       <p><app-breadcrumb></app-breadcrumb></p>
-      <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
     </div>
   </div>
 </div>

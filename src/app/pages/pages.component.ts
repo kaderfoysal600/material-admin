@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import { HeaderService } from '../service/header.service';
 import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,8 @@ export class PagesComponent implements OnInit {
   settingsToggle = false;
   settingsLeftToggle = true;
   favoriteSeason: string;
+  showTooltip = false;
+  miniSidebar = true;
   seasons: any[] = [
     {
       value: 'theme-light',
@@ -45,7 +47,10 @@ export class PagesComponent implements OnInit {
   constructor(private headerService: HeaderService,
     private router: Router,
     private themeService: ThemeService,
-    private staticThemeService: StaticThemeService) {
+    private staticThemeService: StaticThemeService,
+    private elementRef: ElementRef, private renderer: Renderer2
+    )
+     {
     this.myBooleanValue = this.headerService.getBooleanValue();
   }
 
@@ -91,8 +96,6 @@ export class PagesComponent implements OnInit {
   whitOutSubmenuClick(link: String) {
     this.router.navigate([`${link}`])
   }
-
-
   getTooltipContent(data: any) {
     let tooltip = `${data.title}\n`
     for (const item of data.children) {
@@ -100,7 +103,6 @@ export class PagesComponent implements OnInit {
     }
     return tooltip;
   }
-
   settingsClicked() {
     if (this.sidearRight) {
       this.settingsToggle = !this.settingsToggle
@@ -111,7 +113,6 @@ export class PagesComponent implements OnInit {
     console.log('this.settingsToggle', this.settingsToggle)
     
   }
-
   onSidebarLeft(event,value: String) {
     event.preventDefault();
     if (value == "left") {
@@ -121,7 +122,6 @@ export class PagesComponent implements OnInit {
       this.sideNavRight = true;
     }
   }
-
   onSidebarRight(event,value: String) {
     event.preventDefault();
     if (value == "right") {
@@ -130,6 +130,29 @@ export class PagesComponent implements OnInit {
       this.sideNavLeft = true;
       this.sideNavRight = false;
     }
+  }
+
+
+
+  // @HostListener('document:click', ['$event'])
+  // onClick(event: MouseEvent) {
+  //   if (!this.elementRef.nativeElement.contains(event.target)) {
+  //     this.settingsToggle = false; // Clicked outside the sidebar, close it.
+  //   }
+  // }
+
+
+  handleOutsideClick(): void {
+    // if (!this.settingsToggle) {
+    //   // this.isFocused = false;
+    //   return;
+    // }
+    this.settingsToggle = false;
+    this.settingsLeftToggle = false;
+    console.log( "this.settingsToggle",  this.settingsToggle);
+    
+    // this.overlay = false;
+    // this.isFocused = false;
   }
 
 }

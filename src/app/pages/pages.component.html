@@ -37,7 +37,7 @@
         <div class="menu">
           <ul *ngFor="let data of menuData">
             <li>
-              <a *ngIf='sideNav' routerLink="/"
+              <a *ngIf='sideNav'
                 (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
                 routerLinkActive="link-active">
                 <span class="material-icons icon">{{data.icon}}</span>

@@ -20,7 +20,7 @@ export class PagesComponent implements OnInit {
   submenu = false;
   myBooleanValue: boolean;
   settingsToggle = false;
-  settingsLeftToggle = true;
+  settingsLeftToggle = false;
   favoriteSeason: string;
   showTooltip = false;
   miniSidebar = true;
@@ -41,8 +41,8 @@ export class PagesComponent implements OnInit {
       checked: false
     }
   ];
-  sidearLeft = false;
-  sidearRight = true;
+  settingsLeft = false;
+  settingsRight = false;
   sideNavLeft = true;
   sideNavRight = true;
   private settingsInterval: Subscription | null = null;
@@ -75,13 +75,14 @@ export class PagesComponent implements OnInit {
   }
   settingLoaded(){
     if (this.themeSetting === "left") {
-      this.sidearLeft = true;
-      this.sidearRight = false;
+      this.settingsLeft = true;
+      this.settingsRight = false;
       this.sideNavLeft = false;
       this.sideNavRight = true;
+      
     } else if(this.themeSetting === "right"){
-      this.sidearLeft = false;
-      this.sidearRight = true;
+      this.settingsLeft = false;
+      this.settingsRight = true;
       this.sideNavLeft = true;
       this.sideNavRight = false;
     }
@@ -119,7 +120,7 @@ export class PagesComponent implements OnInit {
     this.router.navigate([`${link}`])
   }
   settingsClicked() {
-    if (this.sidearRight) {
+    if (this.settingsRight) {
       this.settingsToggle = !this.settingsToggle
     }
     else {
@@ -133,7 +134,7 @@ export class PagesComponent implements OnInit {
 
      this.settingsInterval = interval(10000).subscribe(() => {
       this.settingsToggle = false; 
-      if(this.sidearLeft){
+      if(this.settingsLeft ){
         this.settingsLeftToggle = false;
       }
       
@@ -149,8 +150,8 @@ export class PagesComponent implements OnInit {
     event.preventDefault();
     if (this.themeSetting === "left") {
       console.log('savedSidebarPosition savedSidebarPosition', savedSidebarPosition)
-      this.sidearLeft = true;
-      this.sidearRight = false;
+      this.settingsLeft = true;
+      this.settingsRight = false;
       this.sideNavLeft = false;
       this.sideNavRight = true;
     }
@@ -163,8 +164,8 @@ export class PagesComponent implements OnInit {
     this.staticThemeService.setSetting(value);
     event.preventDefault();
     if (this.themeSetting == "right") {
-      this.sidearLeft = false;
-      this.sidearRight = true;
+      this.settingsLeft = false;
+      this.settingsRight = true;
       this.sideNavLeft = true;
       this.sideNavRight = false;
     }

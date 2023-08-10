@@ -32,7 +32,7 @@
   }">
     <!---side-nav-->
     <div class="side-nav {{storedTheme}}"
-      [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
+      [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : settingsLeft == true , 'sidenavLeft' : settingsRight == true }">
       <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
         <div class="menu">
           <ul *ngFor="let data of menuData">
@@ -62,7 +62,7 @@
                 <span class="material-icons icon" routerLink="{{data.path}}">{{data.icon}}
                 </span>
                 <div routerLink="{{data.path}}" class="child-menu child-menu-ex"
-                  [class]="sidearRight ? 'child-menu-right' : 'child-menu-left'">{{data.title}}</div>
+                  [class]="settingsRight ? 'child-menu-right' : 'child-menu-left'">{{data.title}}</div>
               </a>
 
 
@@ -70,7 +70,7 @@
               <a *ngIf='!sideNav && data.children' class="child-menu-parent">
                 <span class="material-icons icon" (click)="toggleSubmenu(data, sideNav)">{{data.icon}}
                 </span>
-                <div class="child-menu" [class]="sidearRight ? 'child-menu-right' : 'child-menu-left'">
+                <div class="child-menu" [class]="settingsRight ? 'child-menu-right' : 'child-menu-left'">
                   <h2>{{data.title}}</h2>
                   <div class="chield-submenu" *ngFor="let item of data.children">
                     <a routerLink="{{item.path}}" href="">{{item.title}}</a>
@@ -87,14 +87,14 @@
                <span class="material-icons icon">shopping_cart
               </span>
             </button>
-            <mat-menu #Dashboard="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Dashboard="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item routerLink="/">Dashboard</button>
             </mat-menu>
           </li>
           <li>
             <button [matMenuTriggerFor]="Layout"> <span class="material-icons icon">dashboard
               </span></button>
-            <mat-menu #Layout="matMenu" class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Layout="matMenu" class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="LayoutSub">Layout</button>
             </mat-menu>
             <mat-menu #LayoutSub="matMenu"  >
@@ -108,7 +108,7 @@
           <li>
             <button  [matMenuTriggerFor]="Forms"> <span class="material-icons icon">text_format
               </span></button>
-            <mat-menu #Forms="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Forms="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="FormstSub">Forms</button>
             </mat-menu>
             <mat-menu #FormstSub="matMenu">
@@ -121,7 +121,7 @@
           <li>
             <button  [matMenuTriggerFor]="extra"  > <span class="material-icons icon">settings_input_component
               </span></button>
-            <mat-menu #extra="matMenu" class="parent parent-big" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #extra="matMenu" class="parent parent-big" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="extraSub">Extra Components</button>
             </mat-menu>
             <mat-menu #extraSub="matMenu" class="parent-sub-big">
@@ -137,7 +137,7 @@
           <li>
             <button [matMenuTriggerFor]="Maps"> <span class="material-icons icon">map
               </span></button>
-            <mat-menu #Maps="matMenu"   class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Maps="matMenu"   class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="MapsSub">Maps</button>
             </mat-menu>
             <mat-menu #MapsSub="matMenu">
@@ -151,7 +151,7 @@
           <li>
             <button  [matMenuTriggerFor]="Charts" > <span class="material-icons icon">bar_chart
               </span></button>
-            <mat-menu #Charts="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Charts="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="ChartsSub">Charts</button>
             </mat-menu>
             <mat-menu #ChartsSub="matMenu">
@@ -163,7 +163,7 @@
           <li>
             <button [matMenuTriggerFor]="Editors"  > <span class="material-icons icon">edit
               </span></button>
-            <mat-menu #Editors="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Editors="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="EditorsSub">Editors</button>
             </mat-menu>
             <mat-menu #EditorsSub="matMenu">
@@ -174,7 +174,7 @@
           <li>
             <button [matMenuTriggerFor]="Tables"> <span class="material-icons icon">table_chart
               </span></button>
-            <mat-menu #Tables="matMenu"   class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Tables="matMenu"   class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="TablesSub">Tables & Data</button>
             </mat-menu>
             <mat-menu #TablesSub="matMenu">
@@ -185,7 +185,7 @@
           <li>
             <button [matMenuTriggerFor]="Miscellaneous"> <span class="material-icons icon">error_outline
               </span></button>
-            <mat-menu #Miscellaneous="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Miscellaneous="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="MiscellaneousSub">Miscellaneous</button>
             </mat-menu>
             <mat-menu #MiscellaneousSub="matMenu">
@@ -195,7 +195,7 @@
           <li>
             <button  [matMenuTriggerFor]="Auth"> <span class="material-icons icon">lock_open
               </span></button>
-            <mat-menu #Auth="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
+            <mat-menu #Auth="matMenu"  class="parent" [class]="settingsLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="AuthsSub">Auth</button>
             </mat-menu>
             <mat-menu #AuthsSub="matMenu">
@@ -210,14 +210,14 @@
 
 
     <div class="settings "
-      [ngClass]="{'settings-button-left': sidearLeft == true && settingsLeftToggle == true, 'settings-button-left-first': settingsLeftToggle == false && sidearLeft == true } "
+      [ngClass]="{'settings-button-left': settingsLeft == true && settingsLeftToggle == true, 'settings-button-left-first': settingsLeftToggle == false && settingsLeft == true } "
       (click)="settingsClicked()">
       <mat-icon>settings</mat-icon>
     </div>
     <div appOutSideClick (outsideClick)="handleOutsideClick()" class="settings-main {{storedTheme}}"
       [ngClass]="settingsLeftToggle ? 'settings-left-open': 'settings-left-hide'"
       [ngClass]="settingsToggle ? 'settings-open': 'settings-hide'"
-      [ngClass]="sidearLeft ?  'settings-open-left': 'settings-hide'">
+      [ngClass]="settingsLeft ?  'settings-open-left': 'settings-hide'">
       <div class="example-section">
         <label id="example-radio-group-label">Theme Option</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
@@ -227,8 +227,8 @@
           </mat-radio-button>
         </mat-radio-group>
       </div>
-      <mat-checkbox [checked]="sidearLeft" (click)="onSidebarLeft($event,'left')">Settings Left Version</mat-checkbox>
-      <mat-checkbox [checked]="sidearRight" (click)="onSidebarRight($event,'right')">Settings Right
+      <mat-checkbox [checked]="settingsLeft" (click)="onSidebarLeft($event,'left')">Settings Left Version</mat-checkbox>
+      <mat-checkbox [checked]="settingsRight" (click)="onSidebarRight($event,'right')">Settings Right
         Version</mat-checkbox>
       <mat-checkbox [checked]="!sideNav" (click)="onMiniSidebarClicked($event)">Mini Sidebar</mat-checkbox>
     </div>

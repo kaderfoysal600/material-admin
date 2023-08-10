@@ -620,12 +620,22 @@
 }
 
 
-.settings-hide {
+// .settings-hide {
+//   left: -240px;
+//   background-color: #FFFF;
+//   transition: all 0.3s linear;
+// }
+
+.settings-right-hide{
   right: -240px;
   background-color: #FFFF;
   transition: all 0.3s linear;
 }
-
+.settings-left-hide{
+  left: -240px;
+  background-color: #FFFF;
+  transition: all 0.3s linear;
+}
 .settings-open {
   right: 0px;
   transition: all 0.3s linear;

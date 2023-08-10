@@ -209,15 +209,14 @@
     </div>
 
 
-    <div class="settings "
+    <div class="settings"
       [ngClass]="{'settings-button-left': settingsLeft == true && settingsLeftToggle == true, 'settings-button-left-first': settingsLeftToggle == false && settingsLeft == true } "
       (click)="settingsClicked()">
       <mat-icon>settings</mat-icon>
     </div>
     <div appOutSideClick (outsideClick)="handleOutsideClick()" class="settings-main {{storedTheme}}"
-      [ngClass]="settingsLeftToggle ? 'settings-left-open': 'settings-left-hide'"
-      [ngClass]="settingsToggle ? 'settings-open': 'settings-hide'"
-      [ngClass]="settingsLeft ?  'settings-open-left': 'settings-hide'">
+      [ngClass]="settingsToggle && settingsRight ? 'settings-open': 'settings-right-hide'"
+      [ngClass]="settingsLeft && settingsLeftToggle ? 'settings-open-left': 'settings-left-hide'">
       <div class="example-section">
         <label id="example-radio-group-label">Theme Option</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"

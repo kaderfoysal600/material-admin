@@ -7,7 +7,7 @@ import { MENU_ITEMS } from './pages-menu';
 import { Router } from '@angular/router';
 import { ThemeService } from '../service/theme.service';
 import { StaticThemeService } from '../service/static-theme.service';
-import { interval } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-pages',
@@ -27,23 +27,27 @@ export class PagesComponent implements OnInit {
   seasons: any[] = [
     {
       value: 'theme-light',
-      viewValue: 'Light Mode'
+      viewValue: 'Light Mode',
+      checked: true
     },
     {
       value: 'theme-dark',
-      viewValue: 'Dark Mode'
+      viewValue: 'Dark Mode',
+      checked: false
     },
     {
       value: 'theme-cosmic',
-      viewValue: 'Cosmic'
+      viewValue: 'Cosmic',
+      checked: false
     }
   ];
   sidearLeft = false;
   sidearRight = true;
   sideNavLeft = true;
   sideNavRight = true;
-
+  private settingsInterval: Subscription | null = null;
   storedTheme: string = localStorage.getItem('theme-color')
+  themeSetting = localStorage.getItem('theme-settings');
 
   constructor(private headerService: HeaderService,
     private router: Router,
@@ -58,12 +62,29 @@ export class PagesComponent implements OnInit {
   ngOnInit(): void {
     // this.toggleSubmenu(true)
     console.log('this.settingsToggle', this.settingsToggle)
+    console.log('this.savedSidebarPosition', this.themeSetting)
+    this.settingLoaded()
+
+    // console.log(localStorage)
   }
 
   onRadioChange(theme: string) {
     localStorage.setItem('theme-color', theme)
     this.storedTheme = localStorage.getItem('theme-color')
     this.staticThemeService.setTheme(theme);
+  }
+  settingLoaded(){
+    if (this.themeSetting === "left") {
+      this.sidearLeft = true;
+      this.sidearRight = false;
+      this.sideNavLeft = false;
+      this.sideNavRight = true;
+    } else if(this.themeSetting === "right"){
+      this.sidearLeft = false;
+      this.sidearRight = true;
+      this.sideNavLeft = true;
+      this.sideNavRight = false;
+    }
   }
   /**
     * SideNavToggle()
@@ -97,13 +118,6 @@ export class PagesComponent implements OnInit {
   whitOutSubmenuClick(link: String) {
     this.router.navigate([`${link}`])
   }
-  getTooltipContent(data: any) {
-    let tooltip = `${data.title}\n`
-    for (const item of data.children) {
-      tooltip += item.title + '\n';
-    }
-    return tooltip;
-  }
   settingsClicked() {
     if (this.sidearRight) {
       this.settingsToggle = !this.settingsToggle
@@ -111,25 +125,44 @@ export class PagesComponent implements OnInit {
     else {
       this.settingsLeftToggle = !this.settingsLeftToggle
     }
-    console.log('this.settingsToggle', this.settingsToggle)
 
-     interval(5000).subscribe(() => {
-      this.settingsToggle = false; // Change the value every 5 seconds
+
+    if (this.settingsInterval) {
+      this.settingsInterval.unsubscribe(); // Clear the interval if it's already running
+    }
+
+     this.settingsInterval = interval(10000).subscribe(() => {
+      this.settingsToggle = false; 
+      if(this.sidearLeft){
+        this.settingsLeftToggle = false;
+      }
+      
     });
     
   }
-  onSidebarLeft(event,value: String) {
+  onSidebarLeft(event,value: string) {
+    localStorage.setItem('theme-settings', value)
+    this.themeSetting = localStorage.getItem('theme-settings')
+    this.staticThemeService.setSetting(value);
+    const savedSidebarPosition = localStorage.getItem('theme-settings');
+
     event.preventDefault();
-    if (value == "left") {
+    if (this.themeSetting === "left") {
+      console.log('savedSidebarPosition savedSidebarPosition', savedSidebarPosition)
       this.sidearLeft = true;
       this.sidearRight = false;
       this.sideNavLeft = false;
       this.sideNavRight = true;
     }
+    
   }
-  onSidebarRight(event,value: String) {
+  onSidebarRight(event,value: string) {
+
+    localStorage.setItem('theme-settings', value)
+    this.themeSetting = localStorage.getItem('theme-settings')
+    this.staticThemeService.setSetting(value);
     event.preventDefault();
-    if (value == "right") {
+    if (this.themeSetting == "right") {
       this.sidearLeft = false;
       this.sidearRight = true;
       this.sideNavLeft = true;

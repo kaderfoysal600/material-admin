@@ -81,7 +81,7 @@
 }
 
 .side-nav {
-  position: fixed;
+  position: absolute;
   top: 60px;
   width: 250px;
   box-sizing: border-box;
@@ -148,18 +148,18 @@
 }
 
 .side-nav-main {
-  max-height: 100vh;
-  overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;
+  height: 100%;
+  // overflow: -moz-scrollbars-vertical;
+  // overflow-y: scroll;
   padding-bottom: 60px;
   box-sizing: border-box;
   position: relative;
   z-index: 10;
 }
 
-// .side-nav-main::-webkit-scrollbar {
-//   display: none;
-// }
+.side-nav-main::-webkit-scrollbar {
+  display: none;
+}
 
 .p-100 {
   padding-left: 88px;
@@ -171,11 +171,11 @@
 
 .w-100px {
   width: 60px;
-  overflow-x: auto;
+  // overflow-x: auto;
 }
 
 .over-x {
-  overflow-x: auto;
+  // overflow-x: auto;
 }
 
 .logo {
@@ -352,17 +352,17 @@
   box-sizing: border-box;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  display: none;
-  left: 0;
-  background-color: rgb(0 0 0 / 60%);
-  z-index: 199;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-}
+// .overlay {
+//   position: fixed;
+//   top: 0;
+//   display: none;
+//   left: 0;
+//   background-color: rgb(0 0 0 / 60%);
+//   z-index: 199;
+//   width: 100%;
+//   height: 100vh;
+//   z-index: -1;
+// }
 
 .submenu {
   margin-left: 10px;
@@ -759,8 +759,6 @@
 }
  ::ng-deep .parent.mat-menu-panel{
   position: absolute !important;
-  top: -37px !important;
-  left: 43px !important;
   height: auto!important;
   min-height: auto!important;
   max-height: auto!important;
@@ -775,4 +773,67 @@
 }
 ::ng-deep .parent-big.mat-menu-panel{
   min-width: 170px!important;
+}
+
+::ng-deep.parent-left.mat-menu-panel{
+  top: -37px !important;
+  left: 43px !important;
+}
+
+
+::ng-deep.parent-right.mat-menu-panel{
+  top: -37px !important;
+  right: 55px !important;
+}
+
+
+//sidebar hover css
+
+.child-menu-parent{
+  position: relative;
+  .child-menu{
+    display: none;
+    position: absolute;
+    top: 0;
+    background-color: #FFFF;
+    color: black;
+    border-radius: 5px;
+    text-align: left;
+    min-width: 170px;
+    padding: 10px;
+    h2{
+      font-size: 16px;
+      margin-bottom: 0px;
+      padding: 0px 10px;
+    }
+    .chield-submenu{
+      a{
+        font-size: 14px;
+        color: black;
+        padding: 0px;
+        height: auto;
+        padding: 5px 10px;
+        &:hover{
+          background-color: #666;
+          color: #FFFF;
+        }
+      }
+    }
+
+  }
+}
+
+.child-menu-right{
+  left: 60px;
+
+}
+.child-menu-ex{
+  top: 10px!important;
+}
+.child-menu-left{
+  right: 60px;
+
+}
+.child-menu-parent:hover .child-menu{
+  display: block;
 }

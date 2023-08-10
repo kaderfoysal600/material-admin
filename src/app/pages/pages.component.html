@@ -32,60 +32,69 @@
   }">
     <!---side-nav-->
     <div class="side-nav {{storedTheme}}"
-    [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
-    <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
-      <div *ngIf="sideNav" class="menu">
-        <ul *ngFor="let data of menuData">
-          <li>
-            <a *ngIf='sideNav' routerLink="/"
-              (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
-              routerLinkActive="link-active">
-              <span class="material-icons icon">{{data.icon}}</span>
-              <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
-              </span>
-              <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
-              <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
-            </a>
-            <div *ngIf="sideNav && data.expanded" class="submenu-content"
-              [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
-              <div class="sabmenu-main" *ngFor="let subData of data?.children">
-                <a routerLink="{{subData?.path}}">
-                  <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
-                  </span>
-                </a>
+      [ngClass]="{'w-100px side-nav-active': sideNav == false , 'sidenavRight' : sidearLeft == true , 'sidenavLeft' : sidearRight == true }">
+      <div class="side-nav-main" [ngClass]="{'over-x': sideNav == false}">
+        <div class="menu">
+          <ul *ngFor="let data of menuData">
+            <li>
+              <a *ngIf='sideNav' routerLink="/"
+                (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)" class="sumbenu"
+                routerLinkActive="link-active">
+                <span class="material-icons icon">{{data.icon}}</span>
+                <span [class]="sideNav?'menu-show':'menu-hide'">{{data.title}}
+                </span>
+                <mat-icon *ngIf="sideNav && data.children && ! data.expanded">keyboard_arrow_left</mat-icon>
+                <mat-icon *ngIf="sideNav &&  data.expanded">keyboard_arrow_down</mat-icon>
+              </a>
+              <div *ngIf="sideNav && data.expanded" class="submenu-content"
+                [ngClass]="data.expanded? 'submenu-open': 'submenu-hide'">
+                <div class="sabmenu-main" *ngFor="let subData of data?.children">
+                  <a routerLink="{{subData?.path}}">
+                    <span [class]="sideNav?'menu-show':'menu-hide'">{{subData?.title}}
+                    </span>
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <a *ngIf='!sideNav && !data.children'
-              (click)="data.children ? toggleSubmenu(data, sideNav) :whitOutSubmenuClick(data.path)"
-              #tooltip="matTooltip" matTooltip={{data.title}} matTooltipPosition="right">
-              <span class="material-icons icon">{{data.icon}}
-              </span>
-            </a>
-            <a *ngIf='!sideNav && data.children' class="submenu-parent"
-              (click)="data.children ? toggleSubmenu(data, sideNav) : whitOutSubmenuClick(data.path)"
-              #tooltip="matTooltip" [matTooltip]="getTooltipContent(data)" matTooltipPosition="right">
-              <span class="material-icons icon">{{data.icon}}
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div *ngIf="!sideNav" class="extra-small-sidenav">
+              <a *ngIf='!sideNav && !data.children'
+                (click)="data.children ? toggleSubmenu(data, sideNav) :whitOutSubmenuClick(data.path)"
+                class="child-menu-parent">
+                <span class="material-icons icon" routerLink="{{data.path}}">{{data.icon}}
+                </span>
+                <div routerLink="{{data.path}}" class="child-menu child-menu-ex"
+                  [class]="sidearRight ? 'child-menu-right' : 'child-menu-left'">{{data.title}}</div>
+              </a>
+
+
+
+              <a *ngIf='!sideNav && data.children' class="child-menu-parent">
+                <span class="material-icons icon" (click)="toggleSubmenu(data, sideNav)">{{data.icon}}
+                </span>
+                <div class="child-menu" [class]="sidearRight ? 'child-menu-right' : 'child-menu-left'">
+                  <h2>{{data.title}}</h2>
+                  <div class="chield-submenu" *ngFor="let item of data.children">
+                    <a routerLink="{{item.path}}" href="">{{item.title}}</a>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- <div *ngIf="!sideNav" class="extra-small-sidenav">
         <ul>
           <li  >
-            <button [matMenuTriggerFor]="Dashboard">
+            <button [matMenuTriggerFor]="Dashboard" >
                <span class="material-icons icon">shopping_cart
               </span>
             </button>
-            <mat-menu #Dashboard="matMenu" class="parent" >
+            <mat-menu #Dashboard="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item routerLink="/">Dashboard</button>
             </mat-menu>
           </li>
           <li>
             <button [matMenuTriggerFor]="Layout"> <span class="material-icons icon">dashboard
               </span></button>
-            <mat-menu #Layout="matMenu" class="parent">
+            <mat-menu #Layout="matMenu" class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="LayoutSub">Layout</button>
             </mat-menu>
             <mat-menu #LayoutSub="matMenu"  >
@@ -99,7 +108,7 @@
           <li>
             <button  [matMenuTriggerFor]="Forms"> <span class="material-icons icon">text_format
               </span></button>
-            <mat-menu #Forms="matMenu"  class="parent">
+            <mat-menu #Forms="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="FormstSub">Forms</button>
             </mat-menu>
             <mat-menu #FormstSub="matMenu">
@@ -112,7 +121,7 @@
           <li>
             <button  [matMenuTriggerFor]="extra"  > <span class="material-icons icon">settings_input_component
               </span></button>
-            <mat-menu #extra="matMenu" class="parent parent-big">
+            <mat-menu #extra="matMenu" class="parent parent-big" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="extraSub">Extra Components</button>
             </mat-menu>
             <mat-menu #extraSub="matMenu" class="parent-sub-big">
@@ -128,7 +137,7 @@
           <li>
             <button [matMenuTriggerFor]="Maps"> <span class="material-icons icon">map
               </span></button>
-            <mat-menu #Maps="matMenu"  class="parent">
+            <mat-menu #Maps="matMenu"   class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="MapsSub">Maps</button>
             </mat-menu>
             <mat-menu #MapsSub="matMenu">
@@ -142,7 +151,7 @@
           <li>
             <button  [matMenuTriggerFor]="Charts" > <span class="material-icons icon">bar_chart
               </span></button>
-            <mat-menu #Charts="matMenu"  class="parent">
+            <mat-menu #Charts="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="ChartsSub">Charts</button>
             </mat-menu>
             <mat-menu #ChartsSub="matMenu">
@@ -154,7 +163,7 @@
           <li>
             <button [matMenuTriggerFor]="Editors"  > <span class="material-icons icon">edit
               </span></button>
-            <mat-menu #Editors="matMenu" class="parent">
+            <mat-menu #Editors="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="EditorsSub">Editors</button>
             </mat-menu>
             <mat-menu #EditorsSub="matMenu">
@@ -165,7 +174,7 @@
           <li>
             <button [matMenuTriggerFor]="Tables"> <span class="material-icons icon">table_chart
               </span></button>
-            <mat-menu #Tables="matMenu"  class="parent">
+            <mat-menu #Tables="matMenu"   class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="TablesSub">Tables & Data</button>
             </mat-menu>
             <mat-menu #TablesSub="matMenu">
@@ -176,7 +185,7 @@
           <li>
             <button [matMenuTriggerFor]="Miscellaneous"> <span class="material-icons icon">error_outline
               </span></button>
-            <mat-menu #Miscellaneous="matMenu"  class="parent">
+            <mat-menu #Miscellaneous="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="MiscellaneousSub">Miscellaneous</button>
             </mat-menu>
             <mat-menu #MiscellaneousSub="matMenu">
@@ -186,7 +195,7 @@
           <li>
             <button  [matMenuTriggerFor]="Auth"> <span class="material-icons icon">lock_open
               </span></button>
-            <mat-menu #Auth="matMenu"  class="parent">
+            <mat-menu #Auth="matMenu"  class="parent" [class]="sidearLeft ? 'parent-right': 'parent-left'">
               <button mat-menu-item [matMenuTriggerFor]="AuthsSub">Auth</button>
             </mat-menu>
             <mat-menu #AuthsSub="matMenu">
@@ -195,12 +204,12 @@
             </mat-menu>
           </li>
         </ul>
+      </div> -->
       </div>
     </div>
-  </div>
 
 
-    <div   class="settings "
+    <div class="settings "
       [ngClass]="{'settings-button-left': sidearLeft == true && settingsLeftToggle == true, 'settings-button-left-first': settingsLeftToggle == false && sidearLeft == true } "
       (click)="settingsClicked()">
       <mat-icon>settings</mat-icon>
@@ -212,18 +221,15 @@
       <div class="example-section">
         <label id="example-radio-group-label">Theme Option</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-          [(ngModel)]="favoriteSeason" (change)="onRadioChange(favoriteSeason)">
-          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season.value">
+          [(ngModel)]="favoriteSeason" (change)="onRadioChange(favoriteSeason)"  >
+          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season.value" >
             {{season.viewValue}}
           </mat-radio-button>
         </mat-radio-group>
-        <div>Your favorite season is: {{favoriteSeason}}</div>
       </div>
       <mat-checkbox [checked]="sidearLeft" (click)="onSidebarLeft($event,'left')">Settings Left Version</mat-checkbox>
       <mat-checkbox [checked]="sidearRight" (click)="onSidebarRight($event,'right')">Settings Right
         Version</mat-checkbox>
-
-
       <mat-checkbox [checked]="!sideNav" (click)="onMiniSidebarClicked($event)">Mini Sidebar</mat-checkbox>
     </div>
 
@@ -232,7 +238,7 @@
     <!--all-page-render-->
     <div class="all-page-render" (click)="handleOutsideClick()">
       <p><app-breadcrumb></app-breadcrumb></p>
-      <router-outlet ></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

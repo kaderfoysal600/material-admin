@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
-
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -28,6 +28,7 @@ import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
     MatRadioModule,
     MatCheckboxModule,
     BreadcrumbModule,
+    MatCardModule
   ]
 })
 export class PagesModule { }

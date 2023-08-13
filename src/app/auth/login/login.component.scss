@@ -1,0 +1,55 @@
+@import 'src/theme/theme-default.scss';
+@import 'src/theme/theme-dark.scss';
+@import 'src/theme/theme-blue.scss';
+
+.section-1{
+    padding: 100px;
+}
+.section-1-main.theme-light{
+    background-color:$default_primary-color;
+    color: $default_text-color;
+}
+.section-1-main.theme-dark{
+    background-color:$dark_card_color;
+    color: $dark_text-color;
+}
+.section-1-main.theme-cosmic{
+background-color: $blue_primary-color;
+color: $blue_text-color;
+}
+
+.container{
+    margin: auto;
+    border-radius: 3px;
+}
+
+.section-1-main{
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 5px;
+
+}
+
+.form-container{
+    text-align: center;
+    width: 100%;
+    padding:40px  20px;
+}
+.form{
+    max-width: 450px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    width: 100%;
+    margin: auto;
+}
+
+.submit-area{
+    button{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

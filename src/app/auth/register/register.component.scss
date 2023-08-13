@@ -1,0 +1,94 @@
+@import 'src/theme/theme-default.scss';
+@import 'src/theme/theme-dark.scss';
+@import 'src/theme/theme-blue.scss';
+
+.section-1{
+    padding: 50px;
+}
+.section-1-main.theme-light{
+    background-color:$default_primary-color;
+    color: $default_text-color;
+}
+.section-1-main.theme-dark{
+    background-color:$dark_card_color;
+    color: $dark_text-color;
+}
+.section-1-main.theme-cosmic{
+background-color: $blue_primary-color;
+color: $blue_text-color;
+}
+
+.container{
+    margin: auto;
+    border-radius: 3px;
+}
+
+.section-1-main{
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 5px;
+    max-height: calc(100vh - 100px);
+    overflow-y: scroll;
+
+}
+
+.form-container{
+    text-align: center;
+    width: 100%;
+    padding:40px  20px;
+}
+.form{
+    max-width: 450px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    width: 100%;
+    margin: auto;
+}
+
+.submit-area{
+    button{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+//scroll-bar
+
+
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #101426 red;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 3% !important;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #2e3a59;
+    height: 3% !important;
+  
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #101426;
+    border-radius: 5px;
+    border: 0px solid #2e3a59;
+    height: 3% !important;
+  }
+  
+  

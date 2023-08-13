@@ -8,9 +8,13 @@ import { StaticThemeService } from './service/static-theme.service';
 })
 export class AppComponent {
   title = 'material-admin';
-  // currentTheme: string;
-  storedTheme:string = localStorage.getItem('theme-color')
-  constructor(private staticThemeService: StaticThemeService) {
-    // this.currentTheme = this.staticThemeService.getTheme();
-   }
+  storedTheme:string
+  constructor(private themeService: StaticThemeService) {}
+
+   ngOnInit(): void {
+    this.themeService.theme$.subscribe(theme => {
+      this.storedTheme = theme;
+    });
+   
+  }
 }

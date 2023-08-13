@@ -1,0 +1,19 @@
+@import 'src/theme/theme-default.scss';
+@import 'src/theme/theme-dark.scss';
+@import 'src/theme/theme-blue.scss';
+
+.body{
+    height: 100%;
+    width: 100%;
+}
+
+.body.theme-light{
+    background-color: $default_background-color;
+}
+
+.body.theme-dark{
+    background-color:$dark_background-color;
+}
+.body.theme-cosmic{
+    background-color: $blue_background-color;
+}

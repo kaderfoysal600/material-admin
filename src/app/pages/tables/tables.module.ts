@@ -6,6 +6,7 @@ import { TablesComponent } from './tables.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
+    MatPaginatorModule
   ]
 })
 export class TablesModule { }

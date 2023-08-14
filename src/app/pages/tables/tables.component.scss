@@ -4,6 +4,11 @@ table {
     color: #FFFF;
   }
 
+  ::ng-deep .mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+    color: #FFF;
+    background-color: #222b45;
+}
+
   ::ng-deep .mat-header-cell{
     color:#1e6bb8!important;
     font-size: 16px!important;

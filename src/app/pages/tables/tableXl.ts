@@ -10,10 +10,13 @@ const getFileName = (name: string) => {
   };
 };
 export class TableXl {
-  static exportTableToExcel(tableId: string, name?: string) {
+  static exportTableToExcel(table, name?: string) {
+    console.log('table', table);
+    
     let { sheetName, fileName } = getFileName(name);
-    let targetTableElm = document.getElementById(tableId);
-    let wb = XLSX.utils.table_to_book(targetTableElm, <XLSX.Table2SheetOpts>{
+    // let targetTableElm = document.getElementById(tableId);
+    // console.log('targetTableElm', targetTableElm)
+    let wb = XLSX.utils.table_to_book(table, <XLSX.Table2SheetOpts>{
       sheet: sheetName
     });
     XLSX.writeFile(wb, `${fileName}.xlsx`);

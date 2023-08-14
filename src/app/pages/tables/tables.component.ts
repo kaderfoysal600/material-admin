@@ -76,10 +76,11 @@ export class TablesComponent implements AfterViewInit {
       cell: (element: PeriodicElement) => `${element.symbol}`,
       export: true,
     },
-    { columnDef: 'actions',
-     header: 'Actions', 
-     cell: (element: any) => '' ,
-     export: false,
+    {
+      columnDef: 'actions',
+      header: 'Actions',
+      cell: (element: any) => '',
+      export: false,
     }
   ];
 
@@ -99,40 +100,34 @@ export class TablesComponent implements AfterViewInit {
     const tableClone = document.getElementById('ExampleTable').cloneNode(true) as Element;
     const actionCells = tableClone.querySelectorAll('.edit-delete');
     actionCells.forEach(cell => cell.parentNode.removeChild(cell));
+    // Filter columns that should be included in the export
+    const exportableColumns = this.columns.filter(column => column.export);
 
-
-
-
- // Filter columns that should be included in the export
-  const exportableColumns = this.columns.filter(column => column.export);
-
-  // Remove header cells for non-exportable columns
-  const headerCells = tableClone.querySelectorAll('th');
-  headerCells.forEach((cell, index) => {
-    if (!exportableColumns[index]) {
-      cell.parentNode.removeChild(cell);
-    }
-  });
+    // Remove header cells for non-exportable columns
+    const headerCells = tableClone.querySelectorAll('th');
+    headerCells.forEach((cell, index) => {
+      if (!exportableColumns[index]) {
+        cell.parentNode.removeChild(cell);
+      }
+    });
     TableUtil.exportToPdf(tableClone.outerHTML, 'exported_table');
   }
 
   exportXlTable() {
-
     const tableClone = document.getElementById('ExampleTable').cloneNode(true) as Element;
     const actionCells = tableClone.querySelectorAll('.edit-delete');
     actionCells.forEach(cell => cell.parentNode.removeChild(cell));
+    // Filter columns that should be included in the export
+    const exportableColumns = this.columns.filter(column => column.export);
 
- // Filter columns that should be included in the export
-  const exportableColumns = this.columns.filter(column => column.export);
-
-  // Remove header cells for non-exportable columns
-  const headerCells = tableClone.querySelectorAll('th');
-  headerCells.forEach((cell, index) => {
-    if (!exportableColumns[index]) {
-      cell.parentNode.removeChild(cell);
-    }
-  });
-    TableXl.exportTableToExcel(tableClone.outerHTML, 'exported_table');
+    // Remove header cells for non-exportable columns
+    const headerCells = tableClone.querySelectorAll('th');
+    headerCells.forEach((cell, index) => {
+      if (!exportableColumns[index]) {
+        cell.parentNode.removeChild(cell);
+      }
+    });
+    TableXl.exportTableToExcel(tableClone, 'exported_table');
   }
 }
 
